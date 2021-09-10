@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 selenium = "*"
+pymongo = "*"
+python-dotenv = "*"
 
 [dev-packages]
 ipykernel = "*"
