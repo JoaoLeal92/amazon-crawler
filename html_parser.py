@@ -2,13 +2,16 @@ import re
 from typing import List, Dict
 
 from crawler import Crawler
+from logs import Logs
 
 from selenium.common.exceptions import NoSuchElementException
 
 
 class HtmlDataExtractor:
-    def __init__(self, crawler):
+    def __init__(self, crawler, logs, config):
         self.crawler: Crawler = crawler
+        self.logs: Logs = logs
+        self.config: Dict[str, str] = config
 
     def find_price_identifier(self, identifier_map: Dict[str, List[str]]) -> str:
         for key, identifiers in identifier_map.items():
@@ -42,10 +45,12 @@ class HtmlDataExtractor:
         except NoSuchElementException:
             return None
         except ValueError:
-            print(f"Erro na conversão de preço para inteiro")
+            self.logs.write_error(
+                self.config['CRAWLER_NAME'], "Erro na conversão de preço para inteiro")
             return None
         except Exception as e:
-            print(f"Ocorreu o seguinte erro: {e}")
+            self.logs.write_error(
+                self.config['CRAWLER_NAME'], f"Ocorreu o seguinte erro: {e}")
             return None
 
     def _get_element_text_by_xpath(self, xpath: str) -> str:
@@ -71,10 +76,12 @@ class HtmlDataExtractor:
         except NoSuchElementException:
             return None
         except ValueError:
-            print(f"Erro na conversão de preço para inteiro")
+            self.logs.write_error(
+                self.config['CRAWLER_NAME'], "Erro na conversão de preço para inteiro")
             return None
         except Exception as e:
-            print(f"Ocorreu o seguinte erro: {e}")
+            self.logs.write_error(
+                self.config['CRAWLER_NAME'], f"Ocorreu o seguinte erro: {e}")
             return None
 
     def get_discount_percentage_if_exists(self, discount_class: str) -> str:
@@ -93,7 +100,8 @@ class HtmlDataExtractor:
         except IndexError as e:
             return None
         except Exception as e:
-            print(f"Ocorreu o seguinte erro: {e}")
+            self.logs.write_error(
+                self.config['CRAWLER_NAME'], f"Ocorreu o seguinte erro: {e}")
             return None
 
     def _get_element_text_by_class_name(self, class_name: str) -> str:
@@ -121,8 +129,10 @@ class HtmlDataExtractor:
         except NoSuchElementException:
             return None
         except ValueError:
-            print(f"Erro na conversão de preço para inteiro")
+            self.logs.write_error(
+                self.config['CRAWLER_NAME'], "Erro na conversão de preço para inteiro")
             return None
         except Exception as e:
-            print(f"Ocorreu o seguinte erro: {e}")
+            self.logs.write_error(
+                self.config['CRAWLER_NAME'], f"Ocorreu o seguinte erro: {e}")
             return None
