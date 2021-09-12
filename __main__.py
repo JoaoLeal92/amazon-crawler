@@ -89,7 +89,8 @@ def run():
     product = Product(
         price=current_price,
         original_price=original_price,
-        discount=discount
+        discount=discount,
+        link=args.url.strip()
     )
 
     print(product)
