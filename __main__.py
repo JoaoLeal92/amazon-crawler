@@ -86,6 +86,9 @@ def run():
     discount = extractor.get_discount_percentage_if_exists(
         'priceBlockSavingsString')
 
+    if original_price is None:
+        original_price = current_price
+
     product = Product(
         price=current_price,
         original_price=original_price,
