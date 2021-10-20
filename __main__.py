@@ -50,7 +50,8 @@ def run():
     current_price_identifiers = {
         "xpath": [
             '//span[@id="priceblock_ourprice"]',
-            '//span[@id="priceblock_dealprice"]'
+            '//span[@id="priceblock_dealprice"]',
+            '//span[@id="priceblock_saleprice"]'
         ],
         "class": [
             "priceBlockSavingsString",
