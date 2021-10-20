@@ -26,7 +26,7 @@ def run():
                     "Starting Amazon crawler operation")
     crawler = Crawler(
         driver_path=os.path.abspath(
-            '/home/joao/Documents/Projetos/products-monitor/crawlers/driver/chromedriver'),
+            config["CHROMEDRIVER_PATH"]),
     )
 
     crawler.set_driver_options([
