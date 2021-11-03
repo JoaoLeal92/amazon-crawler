@@ -51,11 +51,14 @@ def run():
         "xpath": [
             '//span[@id="priceblock_ourprice"]',
             '//span[@id="priceblock_dealprice"]',
-            '//span[@id="priceblock_saleprice"]'
+            '//span[@id="priceblock_saleprice"]',
+            '//span[contains(@class, "a-price")]',
+            '//span[contains(@class, "a-size-medium")]',
+            '//span[contains(@class, "apexPriceToPay")]',
+            '//span[contains(@class, "a-text-price")]'
         ],
         "class": [
-            "priceBlockSavingsString",
-            "priceBlockBuyingPriceString"
+            "priceBlockSavingsString"
         ]
     }
 
