@@ -91,7 +91,10 @@ def run():
         'priceBlockSavingsString')
 
     if original_price is None:
-        original_price = current_price
+        original_price = extractor.get_product_price_by_xpath(
+            '//span[contains(@data-a-strike, "true")]')
+        if original_price is None:
+            original_price = current_price
 
     product = Product(
         price=current_price,
