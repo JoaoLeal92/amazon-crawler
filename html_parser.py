@@ -60,7 +60,7 @@ class HtmlDataExtractor:
         return html_text
 
     def _price_string_to_float(self, price_string: str) -> int:
-        formatted_string = price_string.replace(
+        formatted_string = price_string.replace("\n", "").replace(
             "R$", "").replace(".", "").replace(",", "")
 
         int_price = int(formatted_string.strip())
